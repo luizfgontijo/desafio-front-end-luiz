@@ -1,11 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+
 import { ListHeroes } from './components/ListHeroes';
 
 function App() {
   return (
     <div className="App">
+      <h2>
+        LUIZ FELIPE GONTIJO SOARES
+      </h2>
       <ListHeroes />
     </div>
   );

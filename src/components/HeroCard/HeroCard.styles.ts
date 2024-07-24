@@ -9,6 +9,7 @@ export const Card = styled.div`
   margin: 10px;
   text-align: center;
   transition: transform 0.2s;
+  cursor: pointer;
   
   &:hover {
     transform: scale(1.05);

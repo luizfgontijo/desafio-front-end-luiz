@@ -6,14 +6,23 @@ interface Hero {
   id: number;
   name: string;
   images: {
-    xs: string;
-    sm: string;
-    md: string;
     lg: string;
+  };
+  biography: {
+    fullName: string;
+    aliases: string[];
+    placeOfBirth: string;
+    firstAppearance: string;
+    publisher: string;
+    alignment: string;
+  };
+  work: {
+    occupation: string;
+    base: string;
   };
 }
 
-function ListHeroes(){
+function ListHeroes() {
   const [heroes, setHeroes] = useState<Hero[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
@@ -37,7 +46,6 @@ function ListHeroes(){
 
     fetchHeroes();
   }, []);
-
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
@@ -59,11 +67,23 @@ function ListHeroes(){
       />
       <HeroesContainer>
         {filteredHeroes.map(hero => (
-          <HeroCard key={hero.id} name={hero.name} image={hero.images.lg} />
+          <HeroCard
+            key={hero.id}
+            name={hero.name}
+            image={hero.images.lg}
+            heroDetails={{
+              fullName: hero.biography.fullName,
+              aliases: hero.biography.aliases,
+              description: hero.biography.placeOfBirth,
+              occupation: hero.work.occupation,
+              publisher: hero.biography.publisher,
+              alignment: hero.biography.alignment,
+            }}
+          />
         ))}
       </HeroesContainer>
     </HeroListContainer>
   );
-};
+}
 
-export default ListHeroes;
+export default ListHeroes;
